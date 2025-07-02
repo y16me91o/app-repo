@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: yourapp
-          image: 'y16me910/yourapp:latest'
+          image: y16me910/yourapp:latest
           ports:
             - containerPort: 3000
           env:
