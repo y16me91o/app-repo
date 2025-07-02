@@ -44,8 +44,8 @@ pipeline {
                 sshagent(['git-ssh-key']) {
                     sh """
                         sed -i 's|image: ${IMAGE_NAME}:.*|image: ${IMAGE_NAME}:${env.BUILD_ID}|' kubernetes/deployment.yaml
-                        git config user.name "y16me91o"
-                        git config user.email "saivamsipaidimukkala@gmail.com"
+                        git config user.name "jenkins"
+                        git config user.email "jenkins@domain.com"
                         git remote set-url origin git@github.com:y16me91o/app-repo.git
                         git add kubernetes/deployment.yaml
                         git commit -m "Update image to ${IMAGE_NAME}:${env.BUILD_ID}"
