@@ -44,7 +44,7 @@ pipeline {
                 sshagent(['git-ssh-key']) {
                     sh """
                         sed -i 's|image: ${IMAGE_NAME}:.*|image: ${IMAGE_NAME}:${env.BUILD_ID}|' kubernetes/deployment.yaml
-                        git config user.name "jenkins-bot"
+                        git config user.name "y16me91o"
                         git config user.email "saivamsipaidimukkala@gmail.com"
                         git add kubernetes/deployment.yaml
                         git commit -m "Update image to ${IMAGE_NAME}:${env.BUILD_ID}"
