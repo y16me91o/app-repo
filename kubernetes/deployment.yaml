@@ -1,19 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: yourapp
+  name: yourapp
 spec:
-replicas: 1
-selector:
-matchLabels:
-app: yourapp
-template:
-metadata:
-labels:
-app: yourapp
-spec:
-containers:
-- name: yourapp
-image: y16me910/yourapp:28
-ports:
-- containerPort: 80
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yourapp
+  template:
+    metadata:
+      labels:
+        app: yourapp
+    spec:
+      containers:
+        - name: yourapp
+          image: 'y16me910/yourapp:28'
+          ports:
+            - containerPort: 80
+          env:
+            - name: PORT
+              value: '80'
+
