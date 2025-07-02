@@ -58,7 +58,8 @@ pipeline {
         stage('Trigger ArgoCD Sync') {
             steps {
                 script {
-                    sh """
+                   withCredentials([string(credentialsid: 'argocd-token', variable: 'ARGOCD_TOKEN')]) { 
+                   sh """
                         curl -X POST -k https://localhost:8090/api/v1/applications/yourapp/sync \
                           -H "Authorization: Bearer $ARGOCD_TOKEN"
                     """
