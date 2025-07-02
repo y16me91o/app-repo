@@ -17,8 +17,8 @@ spec:
         - name: yourapp
           image: 'y16me910/yourapp:latest'
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           env:
             - name: PORT
-              value: '80'
+              value: '3000'
 
