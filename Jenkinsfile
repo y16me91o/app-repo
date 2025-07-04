@@ -8,34 +8,12 @@ pipeline {
         ARGOCD_TOKEN = credentials('argocd-token')    // ArgoCD API token
         IMAGE_NAME = "y16me910/yourapp"
         SONARQUBE_SERVER = 'Sonarqube' // Name configured in Jenkins global tools
-		SONARQUBE_SCANNER_HOME = tool 'SonarQubeScanner'
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/y16me91o/app-repo.git'
-            }
-        }
-
-     stage('SonarQube Analysis') {
-            steps {
-               withSonarQubeEnv('Sonarqube'){
-                 sh """
-                  ${SONARQUBE_SCANNER_HOME}/bin/sonar-scanner \
-                  -Dsonar.projectKey=yourapp \
-                  -Dsonar.projectName=yourapp \
-				  -Dsonar.projectVersion=${env.BUILD_ID} \
-				  -Dsonar.sources=.\
-				  -Dsonar.java.binaries=target/classes \
-				  -Dsonar.login=${SONAR_AUTH_TOKEN} \
-				  -Dsonar.host.url=${SONARQUBE_URL} 
-				  
-				 """
-				  
-			   }
-
-
             }
         }
 
